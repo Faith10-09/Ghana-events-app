@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 // Starting (blank) values for the form
-const empty = { name: '', email: '', topic: 'List an event', message: '' }
+const empty = { name: '', email: '', topic: '', message: '' }
 
 export default function Contact() {
   // form: current input values, errors: validation messages, sent: shows the success message
@@ -17,8 +17,12 @@ export default function Contact() {
     // Validate each field and collect error messages
     const err = {}
     if (!form.name.trim()) err.name = 'Enter your name.'
-    if (!/^\S+@\S+\.\S+$/.test(form.email)) err.email = 'Enter a valid email address.'
-    if (form.message.trim().length < 10) err.message = 'Write at least 10 characters.'
+    if (!form.topic) err.topic = 'Choose a topic.'
+    const email = form.email.trim()
+    const validEmail = /^[A-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?(?:\.[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?)*\.[A-Z]{2,}$/i.test(email)
+    if (!validEmail) err.email = 'Enter a valid email address.'
+    const messageWords = form.message.trim().split(/\s+/).filter(Boolean)
+    if (messageWords.length < 3) err.message = 'Write at least 3 words.'
     setErrors(err)
     // No errors: show success and clear the form (a real app would send the data to a server here)
     if (Object.keys(err).length === 0) {
@@ -50,11 +54,13 @@ export default function Contact() {
         {errors.email && <span className="error">{errors.email}</span>}
 
         <label htmlFor="topic">Topic</label>
-        <select id="topic" name="topic" value={form.topic} onChange={change}>
-          <option>List an event</option>
-          <option>Correct a detail</option>
-          <option>General question</option>
+        <select id="topic" name="topic" value={form.topic} onChange={change} required>
+          <option value="" disabled>Select an event</option>
+          <option value="List an event">List an event</option>
+          <option value="Correct a detail">Correct a detail</option>
+          <option value="General question">General question</option>
         </select>
+        {errors.topic && <span className="error">{errors.topic}</span>}
 
         <label htmlFor="message">Message</label>
         <textarea id="message" name="message" rows="5" value={form.message} onChange={change} />

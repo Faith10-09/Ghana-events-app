@@ -37,6 +37,10 @@ a { color: var(--green); }
 .btn-primary:hover { background: #ffc938; }
 .btn-ghost { border-color: #fff; color: #fff; }
 .btn-ghost:hover { background: rgba(255,255,255,.12); }
+.back-nav { display: flex; gap: .35rem; padding-top: .75rem; }
+.history-button { display: inline-grid; width: 30px; height: 30px; place-items: center; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: #fff; color: var(--ink); font: 400 1.5rem/1 system-ui, sans-serif; cursor: pointer; }
+.history-button:hover:not(:disabled) { background: #e6f0ea; border-color: var(--green); }
+.history-button:disabled { color: #a5aaa6; cursor: default; }
 
 .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem; }
 /* Responsive card grid: as many 290px+ columns as fit */
