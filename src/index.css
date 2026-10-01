@@ -1,0 +1,87 @@
+/* Colour palette (inspired by the Ghana flag) stored as CSS variables for easy reuse */
+:root {
+  --green: #0e4d34; --green-dark: #08301f; --gold: #f2b91d; --red: #c8352b;
+  --ink: #1b1f1c; --paper: #fbfaf6; --line: #dcdad0; --muted: #5b625d;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: 'DM Sans', system-ui, sans-serif; color: var(--ink); background: var(--paper); line-height: 1.6; }
+h1, h2, h3 { font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; line-height: 1.15; margin: 0 0 .5em; }
+h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; }
+h2 { font-size: 1.6rem; } h3 { font-size: 1.2rem; }
+a { color: var(--green); }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.container { width: min(1100px, 92%); margin: 0 auto; }
+.section { padding: 3rem 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* Kente-style stripe used under the navbar and above the footer */
+.kente { height: 8px; background: repeating-linear-gradient(90deg, var(--gold) 0 24px, var(--red) 24px 40px, var(--green) 40px 64px, #111 64px 72px); }
+.nav { background: #fff; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--line); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: .9rem 0; }
+.brand { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--green); text-decoration: none; }
+.links { display: flex; gap: 1.5rem; }
+.links a { text-decoration: none; color: var(--ink); font-weight: 500; padding: .2rem 0; border-bottom: 3px solid transparent; }
+.links a:hover { border-color: var(--gold); }
+.links a.active { border-color: var(--red); }
+.menu-btn { display: none; background: none; border: 1px solid var(--line); border-radius: 6px; padding: .4rem .8rem; font: inherit; cursor: pointer; }
+
+.hero { background: var(--green); color: #fff; padding: 5rem 0 5.5rem; }
+.hero h1 { max-width: 14ch; }
+.lead { font-size: 1.15rem; max-width: 60ch; }
+.lead.small { color: var(--muted); font-size: 1.05rem; }
+.hero .lead { color: #e4efe8; }
+.actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.8rem; }
+.btn { display: inline-block; padding: .75rem 1.4rem; border-radius: 8px; font: 700 1rem 'DM Sans', sans-serif; text-decoration: none; cursor: pointer; border: 2px solid transparent; }
+.btn-primary { background: var(--gold); color: #1b1400; }
+.btn-primary:hover { background: #ffc938; }
+.btn-ghost { border-color: #fff; color: #fff; }
+.btn-ghost:hover { background: rgba(255,255,255,.12); }
+
+.section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem; }
+/* Responsive card grid: as many 290px+ columns as fit */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.4rem; }
+.card { background: #fff; border: 1px solid var(--line); border-top: 5px solid var(--green); border-radius: 10px; padding: 1.3rem; }
+.card p { margin: .4rem 0; }
+.meta { color: var(--muted); font-size: .92rem; }
+.tag { display: inline-block; font-size: .8rem; font-weight: 700; padding: .15rem .6rem; border-radius: 99px; background: #e6f0ea; color: var(--green-dark); margin-bottom: .6rem; }
+.tag-arts { background: #fbe3df; color: #8a1f17; }
+.tag-music { background: #fdf0c7; color: #6b5000; }
+.tag-food { background: #f5e6d3; color: #6a3d0c; }
+
+.band { background: var(--ink); color: #fff; }
+.band-inner { display: flex; justify-content: space-around; gap: 1rem; flex-wrap: wrap; padding: 2rem 0; text-align: center; }
+.band strong { display: block; font: 800 2rem 'Bricolage Grotesque', sans-serif; color: var(--gold); }
+
+.filters { display: grid; gap: 1rem; margin: 1.5rem 0 .5rem; }
+input, select, textarea { width: 100%; padding: .7rem .9rem; border: 1px solid #b9b7ab; border-radius: 8px; font: inherit; background: #fff; }
+.chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+.chip { border: 1px solid var(--line); background: #fff; border-radius: 99px; padding: .4rem 1rem; font: inherit; cursor: pointer; }
+.chip.active { background: var(--green); color: #fff; border-color: var(--green); }
+.count { color: var(--muted); }
+.empty { padding: 2rem; background: #fff; border: 1px dashed var(--line); border-radius: 10px; }
+
+.prose { max-width: 720px; }
+.prose h2 { margin-top: 2rem; }
+
+.contact { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: start; }
+.info { list-style: none; padding: 0; }
+form { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 1.6rem; }
+form label { display: block; font-weight: 700; margin: 1rem 0 .3rem; }
+form label:first-of-type { margin-top: 0; }
+form .btn { margin-top: 1.3rem; }
+.error { color: var(--red); font-size: .9rem; }
+.success { background: #e3f3e9; border: 1px solid #9ccbae; padding: .8rem 1rem; border-radius: 8px; margin: 0 0 1rem; }
+
+.footer { background: #fff; margin-top: 2rem; }
+.footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; padding: 1.5rem 0; color: var(--muted); }
+.footer-inner p { margin: 0; }
+
+/* Mobile layout: show the menu button, stack the contact page into one column */
+@media (max-width: 720px) {
+  .menu-btn { display: block; }
+  .links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: #fff; padding: 1rem 4%; border-bottom: 1px solid var(--line); gap: .8rem; }
+  .links.open { display: flex; }
+  .contact { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
